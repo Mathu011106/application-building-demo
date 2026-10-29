@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade_Calculator</title>
+    <style>
+        body {
+            background-color:beige;
+            text-align: center;
+            padding: 250px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1 >Grade Calculator</h1>
+    <input type="text" placeholder="Enter the Name:" id="grade"><br><br>
+    <button style="background-color: cadetblue;" onclick="grade()">Submit</button>
+    <p id="p"></p>
+    </center>
+
+    <script>
+        function grade() {
+            let mark=document.getElementById("grade").value
+            if(mark>90){
+               let a=document.getElementById("p")
+               a.textContent="Grade A"
+               a.style.color="Green"
+            }
+            else if(mark>80) {
+               let a=document.getElementById("p")
+                a.textContent="Grade B"
+                a.style.color="Blue"
+            }
+            else if(mark>70) {
+                let a=document.getElementById("p")
+                a.textContent="Grade C"
+                a.style.color="Yellow"
+            }
+            else if(mark>60) {
+                let a=document.getElementById("p")
+                a.textContent="Grade "
+                a.style.color="Skyblue"
+            }
+            else {
+                let a=document.getElementById("p")
+                a.textContent="Grade Fail"
+                a.style.color="Red"
+            }
+        }
+    </script>
+</body>
+</html>

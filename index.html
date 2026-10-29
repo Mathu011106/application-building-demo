@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping_cart</title>
+    <style>
+        .img{
+            height:200px;
+            width:200px;
+            border-radius:100px;
+        }
+        body{
+            background-color: cadetblue;
+        }
+        </style>
+    
+</head>
+<body>
+    <center>
+        <h1>Simple Shopping Cart</h1>
+        <img src="img.jpg" class="img">
+        <p>Mobile</p>
+        <p>Price:<span id="p">15000</span></p>
+        <p>Quantity:<span id="q">1</span></p>
+        <button style="background-color: navajowhite ;" onclick="increment()">+</button>
+        <button style="background-color: brown;" onclick="decrement()">-</button>
+        <button style="background-color: darkgreen;" onclick="submit()">Submit</button>
+        </center>
+
+    <script>
+        let quantity=1;
+        let price=15000;
+        function increment() {
+            quantity++;
+            document.getElementById("q").textContent=quantity
+            document.getElementById("p").textContent=quantity*price
+    }
+
+    
+    function decrement() {
+        if(quantity>0){
+        quantity--;
+        document.getElementById("q").textContent=quantity
+        document.getElementById("p").textContent=quantity*price
+        }}
+
+    function submit() {
+        alert("Your Order Submitted Successfully.")
+    }
+
+    </script>
+</body>
+</html>

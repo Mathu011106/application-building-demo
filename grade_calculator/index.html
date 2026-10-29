@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Operations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fff8dc, #fef9e7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      border: 2px solid orange;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      color: orange;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Number Analyzer</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <br>
+    <button onclick="analyzeNumber()">Analyze</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function checkEvenOdd(num) {
+      return num % 2 === 0 ? "Even" : "Odd";
+    }
+
+    function factorial(num) {
+      if (num < 0) return "Not defined for negative numbers";
+      let fact = 1;
+      for (let i = 1; i <= num; i++) {
+        fact *= i;
+      }
+      return fact;
+    }
+
+    function fibonacci(n) {
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n).join(", ");
+    }
+
+    function reverseNumber(num) {
+      let reversed = 0;
+      while (num > 0) {
+        reversed = reversed * 10 + (num % 10);
+        num = Math.floor(num / 10);
+      }
+      return reversed;
+    }
+
+    function analyzeNumber() {
+      const num = parseInt(document.getElementById("numberInput").value);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(num)) {
+        resultDiv.innerHTML = "<p>Please enter a valid number.</p>";
+        return;
+      }
+
+      resultDiv.innerHTML = `
+        <p><b>Number:</b> ${num}</p>
+        <p><b>Prime:</b> ${isPrime(num) ? "Yes" : "No"}</p>
+        <p><b>Even/Odd:</b> ${checkEvenOdd(num)}</p>
+        <p><b>Factorial:</b> ${factorial(num)}</p>
+        <p><b>Fibonacci (${num} terms):</b> ${fibonacci(num)}</p>
+        <p><b>Reversed Number:</b> ${reverseNumber(num)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
